@@ -35,7 +35,7 @@ public class StudentAPI {
     }
 
     @DeleteMapping(value = "/{studentId}")
-    public void delete(@PathVariable("studentId") int studentId) {
+    public void deleteStudent(@PathVariable("studentId") int studentId) {
         service.getStudent(studentId);
     }
 }

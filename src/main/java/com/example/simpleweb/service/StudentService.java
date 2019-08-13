@@ -36,23 +36,25 @@ public class StudentService {
     }
 
     public Student update(int studentId, Student student) {
-        list.stream().forEach(c -> {
-            if (c.getStudentId() == studentId) {
-                c.setFullName(student.getFullName());
-                c.setPhone(student.getPhone());
-                c.setEmail(student.getEmail());
-                c.setAddress(student.getAddress());
-            }
-        });
-        return list.stream().filter(c -> c.getStudentId() == studentId).findFirst().get();
+//        list.stream().forEach(c -> {
+//            if (c.getStudentId() == studentId) {
+//                c.setFullName(student.getFullName());
+//                c.setPhone(student.getPhone());
+//                c.setEmail(student.getEmail());
+//                c.setAddress(student.getAddress());
+//            }
+//        });
+//        return list.stream().filter(c -> c.getStudentId() == studentId).findFirst().get();
+        student.setStudentId(studentId);
+        return studentDao.save(student);
     }
 
-    public void delete(){
+    public void deleteStudent(int studentId){
 //        list.stream().forEach(c -> {
 //            if (c.getStudentId() == studentId){
 //                list.remove(c);
 //            }
 //        });
-        studentDao.deleteAll();
+        studentDao.deleteById(studentId);
     }
 }
